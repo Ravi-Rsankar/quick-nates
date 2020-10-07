@@ -31,3 +31,11 @@ In Python, negative sequence indexes represent positions from the end of the arr
 #### Sets in Python
 
 A Set is an ***unordered*** collection data type that is iterable, mutable and has no duplicate elements. Python’s set class represents the mathematical notion of a set. The major advantage of using a set, as opposed to a list, is that it has a highly optimized method for checking whether a specific element is contained in the set. This is based on a data structure known as a [hash table](https://www.geeksforgeeks.org/hashing-set-1-introduction/). Since sets are unordered, we cannot access items using indexes like we do in [lists](https://www.geeksforgeeks.org/python-list/).
+
+#### Ordered and Unordered collection
+
+In python, list and tuples are ordered and dictionaries and sets are unordered.
+
+In Lists and Tuples you will be able to access the elements based on there position. That is element at position 0 will always be at position 0 hence, can be accessed using integers like L[0] or T[0] and result will be 1.
+
+While in dictionary this cannot be done. The position of the elements may vary. So when you access elements in a dictionary, we dont do it based on position. we do it based on keys
