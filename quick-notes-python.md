@@ -1,6 +1,6 @@
 # Quick-notes: Python
 
-#### Name some characteristics of Python?
+### Name some characteristics of Python?
 
 - Python is an **interpreted language**. That means that, unlike languages like C and its variants, Python does not need to be compiled before it is run. Other interpreted languages include *PHP* and *Ruby*.
 - Python is **dynamically typed**, this means that you don't need to state the types of variables when you declare them or anything like that. You can do things like `x=111` and then `x="I'm a string"` without error
@@ -8,7 +8,7 @@
 - In Python, **functions are first-class objects**. This means that they can be assigned to variables, returned from other functions and passed into functions. Classes are also first class objects
 - Writing Python code is quick but running it is **often slower than compiled languages**. Fortunately, Python allows the inclusion of C based extensions so bottlenecks can be optimized away and often are. The `numpy` package is a good example of this, it's really quite quick because a lot of the number crunching it does isn't actually done by Python
 
-#### Lists in Python
+### Lists in Python
 
 **Lists** are just like dynamic sized arrays. Lists need not be homogeneous always. A single list may contain DataTypes like Integers, Strings, as well as Objects. Lists are mutable, and hence, they can be altered even after their creation.
 
@@ -28,14 +28,22 @@ Other than `append()` and `insert()` methods, there’s one more method for Addi
 
 In Python, negative sequence indexes represent positions from the end of the array. Instead of having to compute the offset as in `List[len(List)-3]`, it is enough to just write `List[-3]`. Negative indexing means beginning from the end, -1 refers to the last item, -2 refers to the second-last item, etc.
 
-#### Sets in Python
+### Sets in Python
 
-A Set is an ***unordered*** collection data type that is iterable, mutable and has no duplicate elements. Python’s set class represents the mathematical notion of a set. The major advantage of using a set, as opposed to a list, is that it has a highly optimized method for checking whether a specific element is contained in the set. This is based on a data structure known as a [hash table](https://www.geeksforgeeks.org/hashing-set-1-introduction/). Since sets are unordered, we cannot access items using indexes like we do in [lists](https://www.geeksforgeeks.org/python-list/).
+A Set is an ***unordered*** collection, sets do not record element position or order of insertion. Accordingly, sets do not support indexing, slicing, or other sequence-like behavior. 
 
-#### Ordered and Unordered collection
+They are mutable and has no duplicate elements. Python’s set class represents the mathematical notion of a set. 
+
+The major advantage of using a set, as opposed to a list, is that it has a highly optimized method for checking whether a specific element is contained in the set. This is based on a data structure known as a [hash table](https://www.geeksforgeeks.org/hashing-set-1-introduction/). 
+
+
+
+The set classes are implemented using dictionaries. Accordingly, the requirements for set elements are the same as those for dictionary keys; namely, that the element defines both [`__eq__()`](https://docs.python.org/2/reference/datamodel.html#object.__eq__) and [`__hash__()`](https://docs.python.org/2/reference/datamodel.html#object.__hash__). As a result, sets cannot contain mutable elements such as lists or dictionaries. However, they can contain immutable collections such as tuples or instances of [`ImmutableSet`](https://docs.python.org/2/library/sets.html#sets.ImmutableSet). For convenience in implementing sets of sets, inner sets are automatically converted to immutable form, for example, `Set([Set(['dog'])])` is transformed to `Set([ImmutableSet(['dog'])])`.
+
+### Ordered and Unordered collection
 
 In python, list and tuples are ordered and dictionaries and sets are unordered.
 
-In Lists and Tuples you will be able to access the elements based on there position. That is element at position 0 will always be at position 0 hence, can be accessed using integers like L[0] or T[0] and result will be 1.
+In Lists and Tuples you will be able to access the elements based on their position. That is element at position 0 will always be at position 0 hence, can be accessed using integers like L[0] or T[0] and result will be the value in that index.
 
-While in dictionary this cannot be done. The position of the elements may vary. So when you access elements in a dictionary, we dont do it based on position. we do it based on keys
+While in dictionary this cannot be done. The position of the elements may vary. So when you access elements in a dictionary, we don't do it based on position. we do it based on keys
