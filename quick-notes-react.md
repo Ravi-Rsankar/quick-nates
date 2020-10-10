@@ -1,4 +1,12 @@
-# Quick-notes: React-native
+# Quick-notes: React
+
+Create a reactJS project and start  
+
+```
+npx create-react-app my-app
+cd my-app
+npm start
+```
 
 #### What is virtual DOM? 
 
