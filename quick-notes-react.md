@@ -25,3 +25,7 @@ By doing this, React will then know the exact changes which occurred, and by kno
 The *state* is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.
 
 *Props* (short for properties) are a Component's configuration. They are received from above and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components. Props do not have to just be data - callback functions may be passed in as props.
+
+#### What is hot loading
+
+**Hot loading** is the replacement of code in a running application without requiring a restart or reloading of the application. It is very useful when developing because you can see your changes as you make them thus giving immediate feedback
