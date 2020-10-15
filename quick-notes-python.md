@@ -58,5 +58,7 @@ While in dictionary this cannot be done. The position of the elements may vary. 
 
 ### Tuple
 
+In someways a tuple is similar to a list in terms of indexing, nested objects and repetition but a tuple is immutable unlike lists which are mutable.
+
 ### Dictionaries
 
