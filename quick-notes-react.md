@@ -29,3 +29,30 @@ The *state* is a data structure that starts with a default value when a Componen
 #### What is hot loading
 
 **Hot loading** is the replacement of code in a running application without requiring a restart or reloading of the application. It is very useful when developing because you can see your changes as you make them thus giving immediate feedback
+
+#### JSX
+
+- It describes what the UI should look like & it basically produces React Elements.
+- After compilation JSX expressions become normal JS functions which are finally evaluated to plain JS objects. Therefore, we can use JSX expressions inside if statements, loops, pass them as an argument to functions as well as return them from some functions.
+- So, now we know that JSX are more closer to plain JavaScript than HTML. Therefore, we use **camelCase** property naming convention instead of normal HTML attributes for tags. Eg: **className** instead of **class**, **htmlFor** instead of **for** and so on.
+- Anything that we mention inside `{}` of a JSX expression will be evaluated as plain JavaScript.
+
+#### How is JSX converted to JavaScript objects
+
+When an application is compiled, Babel breaks down the JSX code to Javascript element using the React.createElement() method. What `React.createElement()` does is basically takes in the element type, props associated with it and the childrens of that particular element as arguments and returns us a plain JavaScript object. 
+
+The function definition of `React.createElement()` is:
+
+```
+React.createElement(
+  type,
+  [props],
+  [...children]
+)
+```
+
+#### Do we really need JSX to write React Applications ?
+
+The answer is a big **NO**. React by itself doesn't require JSX. We could always use `React.createElement()` and not write JSX at all because it eventually is compiled to it.
+
+But, imagine having too many nested tags, or building a complex UI. Would you prefer the simplicity of what JSX offers or the complexity of using `React.createElement()` ? And there are not such real world benefits of not using JSX. So, the answer is pretty obvious I think.
