@@ -69,3 +69,79 @@ Tuples are similar to list in terms of indexing. They are immutable lists which 
 #### Flask Vs Django
 
 On the whole, both Flask and Django are widely used open source web frameworks for Python. Django is a full-stack web framework, whereas Flask is a micro and lightweight web framework. The features provided by Django help developers to build large and complex web applications. On the other hand, Flask accelerates development of simple web applications by providing the required functionality. Hence, the developers must keep in mind the needs of individual projects while comparing Flask and Django.
+
+#### What does immutable really mean
+
+According to the official Python documentation, immutable is 'an object with a fixed value', but 'value' is a rather vague term, the correct term for tuples would be 'id'. 'id' is the identity of the location of an object in memory. The id will be different for different values of a variable. If the value is same then the location and hence the id will be same. Immutability is checked using this id.
+
+Let's look a little more in-depth:
+
+```python
+# Tuple 'n_tuple' with a list as one of its item.
+n_tuple = (1, 1, [3,4])
+
+#Items with same value have the same id.
+id(n_tuple[0]) == id(n_tuple[1])
+True
+#Items with different value have different id.
+id(n_tuple[0]) == id(n_tuple[2])
+False
+id(n_tuple[0])
+4297148528
+id(n_tuple[2])
+4359711048
+n_tuple.append(5)
+---------------------------------------------------------------------------
+
+AttributeError                            Traceback (most recent call last)
+
+<ipython-input-40-3cd258e024ff> in <module>()
+----> 1 n_tuple.append(5)
+
+
+AttributeError: 'tuple' object has no attribute 'append'
+```
+
+We cannot append item to a tuple, that is why you get an error above. This is why tuple is termed immutable. But, you can always do this:
+
+```python
+n_tuple[2].append(5)
+n_tuple
+(1, 1, [3, 4, 5])
+```
+
+Thus, allowing you to actually mutate the original tuple. How is the tuple still called immutable then?
+
+This is because, the id of the list within the tuple still remains the same even though you appended 5 to it.
+
+```python
+id(n_tuple[2])
+4359711048
+```
+
+#### List vs Set vs Tuple
+
+**List**
+
+- Lists are ordered.
+- Lists can contain any arbitrary objects.
+- List elements can be accessed by index.
+- Lists can be nested to arbitrary depth.
+- Lists are mutable.
+- Lists are dynamic.
+
+**Set**
+
+- Sets are unordered
+- Sets can contain any arbitrary objects.
+- Its not index based.
+- Does not allow duplicates.
+- Sets are mutable, however only immutable objects are stored in it
+- It has highly optimized methods to check where a element exists in it or not.
+
+**Tuple**
+
+- Tuples are ordered.
+- Its immutable, read-only
+- Elements can be accessed through index, but they cannot be modified or deleted.
+- 
