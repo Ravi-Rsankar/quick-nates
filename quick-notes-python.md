@@ -58,7 +58,14 @@ While in dictionary this cannot be done. The position of the elements may vary. 
 
 ### Tuple
 
-In someways a tuple is similar to a list in terms of indexing, nested objects and repetition but a tuple is immutable unlike lists which are mutable.
+Tuples are similar to list in terms of indexing. They are immutable lists which means that once a tuple is created you cannot delete or change the values of the items stored in it. You cannot add new values either. Tuples can hold both homogeneous as well as heterogeneous values. However, remember that once you declared those values, you cannot change them. Not only do they provide **"read-only"** access to the data values but **they are also faster than lists**.
+
+
 
 ### Dictionaries
 
+
+
+#### Flask Vs Django
+
+On the whole, both Flask and Django are widely used open source web frameworks for Python. Django is a full-stack web framework, whereas Flask is a micro and lightweight web framework. The features provided by Django help developers to build large and complex web applications. On the other hand, Flask accelerates development of simple web applications by providing the required functionality. Hence, the developers must keep in mind the needs of individual projects while comparing Flask and Django.
