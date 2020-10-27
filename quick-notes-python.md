@@ -60,17 +60,22 @@ While in dictionary this cannot be done. The position of the elements may vary. 
 
 Tuples are similar to list in terms of indexing. They are immutable lists which means that once a tuple is created you cannot delete or change the values of the items stored in it. You cannot add new values either. Tuples can hold both homogeneous as well as heterogeneous values. However, remember that once you declared those values, you cannot change them. Not only do they provide **"read-only"** access to the data values but **they are also faster than lists**.
 
-
-
 ### Dictionaries
 
+- Mutable.
+- Unordered.  it is not indexed by a sequence of numbers but indexed based on `keys`. a key cannot be a mutable data type. Keys are unique within a dictionary and can not be duplicated inside a dictionary, in case if it is used more than once then subsequent entries will overwrite the previous value. Key` connects with the `value
+- To access the key value pair, you would use the `.items()` method, which will return a list of `dict_items` in the form of a key, value tuple pairs. To access keys and values separately, you could use a for loop on the dictionary or the `.keys()` and `.values()` method.
+- Nesting is possible in dictionary. A value can be dictionary for a key.
 
+#### Defaultdict
 
-#### Flask Vs Django
+**Defaultdict** is a container like dictionaries present in the module **collections**. Defaultdict is a sub-class of the `dict` class that returns a dictionary-like object. The functionality of both dictionaries and defualtdict are almost same except for the fact that defualtdict never raises a `KeyError`. It provides a default value for the key that does not exists. The default value has to be defined on the creation of the dictionary. 
+
+### Flask Vs Django
 
 On the whole, both Flask and Django are widely used open source web frameworks for Python. Django is a full-stack web framework, whereas Flask is a micro and lightweight web framework. The features provided by Django help developers to build large and complex web applications. On the other hand, Flask accelerates development of simple web applications by providing the required functionality. Hence, the developers must keep in mind the needs of individual projects while comparing Flask and Django.
 
-#### What does immutable really mean
+### What does immutable really mean
 
 According to the official Python documentation, immutable is 'an object with a fixed value', but 'value' is a rather vague term, the correct term for tuples would be 'id'. 'id' is the identity of the location of an object in memory. The id will be different for different values of a variable. If the value is same then the location and hence the id will be same. Immutability is checked using this id.
 
@@ -119,7 +124,7 @@ id(n_tuple[2])
 4359711048
 ```
 
-#### List vs Set vs Tuple
+### Data structure comparison 
 
 **List**
 
@@ -142,6 +147,9 @@ id(n_tuple[2])
 **Tuple**
 
 - Tuples are ordered.
-- Its immutable, read-only
-- Elements can be accessed through index, but they cannot be modified or deleted.
-- 
+- Its immutable, read-only.
+- Elements can be accessed through index, but they cannot be modified or deleted. However tuple allows to store mutable objects like list which can be modified
+- It allows duplicate
+- Since tuple is immutable, it requires a single block of memory and doesn't require extra space to store new objects. So *creating tuple is faster than list*. It also explains the slight difference in indexing speed is faster than lists,
+  because in tuples for indexing it follows fewer pointers.
+- Tuples can't be sorted
