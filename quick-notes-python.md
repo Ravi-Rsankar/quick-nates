@@ -8,6 +8,12 @@
 - In Python, **functions are first-class objects**. This means that they can be assigned to variables, returned from other functions and passed into functions. Classes are also first class objects
 - Writing Python code is quick but running it is **often slower than compiled languages**. Fortunately, Python allows the inclusion of C based extensions so bottlenecks can be optimized away and often are. The `numpy` package is a good example of this, it's really quite quick because a lot of the number crunching it does isn't actually done by Python
 
+### Attributes in Python
+
+**Class Attributes**: Belong to the class itself. They will be shared by all the instances. All object refer to single copy
+
+**Instance Attributes**:  Unlike class attributes, instance attributes are not shared by objects. Every object has its own copy of the instance attribute
+
 ### Lists 
 
 **Lists** are just like dynamic sized arrays. Lists need not be homogeneous always. A single list may contain DataTypes like Integers, Strings, as well as Objects. Lists are mutable, and hence, they can be altered even after their creation.
@@ -47,6 +53,12 @@ We can add a single element using the `add()` method, and multiple elements usin
 A particular item can be removed from a set using the methods `discard()` and `remove()`.
 
 The only difference between the two is that the `discard()` function leaves a set unchanged if the element is not present in the set. On the other hand, the `remove()` function will raise an error in such a condition (if element is not present in the set).
+
+#### Frozen Set
+
+In Python, frozenset is same as set except its elements are immutable. This function takes input as any iterable object and converts them into immutable object. The order of element is not guaranteed to be preserved. 
+
+Since frozenset object are immutable they are mainly used as key in dictionary or elements of other sets
 
 ### Ordered and Unordered collection
 
@@ -153,3 +165,55 @@ id(n_tuple[2])
 - Since tuple is immutable, it requires a single block of memory and doesn't require extra space to store new objects. So *creating tuple is faster than list*. It also explains the slight difference in indexing speed is faster than lists,
   because in tuples for indexing it follows fewer pointers.
 - Tuples can't be sorted
+
+### Zip function
+
+The purpose of zip() is to **map the similar index of multiple containers** so that they can be used just using as single entity. The function takes in [iterables](https://docs.python.org/3/glossary.html#term-iterable) as arguments and returns an **iterator**. This iterator generates a series of tuples. If you use `zip()` with `n` arguments, then the function will return an iterator that generates tuples of length `n`. 
+
+```python
+z = zip(['A', 'B', 'C'], [1,2,3])
+set(z)
+Output: {('A', 1), ('B', 2), ('C', 3)}
+```
+
+Unzipping means converting the zipped values back to the individual self as they were. This is done with the help of “*****” operator.
+
+```python
+z = zip(['A', 'B', 'C'], [1,2,3])
+l = list(z)
+l1, l2 = zip(*l)
+print(l1)
+print(l2)
+Output: ('A', 'B', 'C')
+		(1, 2, 3)
+```
+
+Python’s `zip()` function can take just one argument as well. The result will be an iterator that yields a series of 1-item tuples:
+
+```python
+a = [1, 2, 3]
+zipped = zip(a)
+list(zipped)
+Output: [(1,), (2,), (3,)]
+```
+
+#### Passing arguments of unequal length
+
+The number of elements that `zip()` puts out will be equal to the length of the *shortest* iterable. The remaining elements in any longer iterables will be totally ignored by `zip()`, as you can see here:
+
+```python
+list(zip(range(5), range(100)))
+[(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]
+```
+
+#### Building dictionaries
+
+```python
+z = zip(['A', 'B', 'C'], [1,2,3])
+d = dict(z)
+print(d)
+Output: {'A': 1, 'B': 2, 'C': 3}
+```
+
+
+
