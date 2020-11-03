@@ -293,7 +293,7 @@ Output: {'A': 1, 'B': 2, 'C': 3}
 
 ### Built-in functions
 
-#### all()
+#### all
 
 The all() method returns True when all elements in the given iterable are true. If not, it returns False.
 
@@ -308,7 +308,7 @@ print(all(l))
 # False
 ```
 
-#### any()
+#### any
 
 The any() function returns True if any element of an iterable is True. If not, any() returns False.
 
@@ -323,7 +323,7 @@ print(any(l))
 # False
 ```
 
-#### abs()
+#### abs
 
 The abs() method returns the absolute value of the given number. If the number is a complex number, abs() returns its magnitude.
 
@@ -336,4 +336,68 @@ print('Absolute value of -20 is:', abs(integer))
 complex = (3 - 4j)
 print('Magnitude of 3 - 4j is:', abs(complex))
 # Magnitude of 3 - 4j is: 5.0
+```
+
+#### map
+
+The map() function applies a given function to each item of an iterable (list, tuple etc.) and returns a list of the results.
+
+```python
+def calculateSquare(n):
+    return n*n
+
+
+numbers = (1, 2, 3, 4)
+result = map(calculateSquare, numbers)
+print(result)
+
+# converting map object to set
+numbersSquare = set(result)
+print(numbersSquare)
+```
+
+```python
+<map object at 0x7f722da129e8>
+{16, 1, 4, 9}
+```
+
+#### eval
+
+The eval() method parses the expression passed to this method and runs python expression (code) within the program. In simple terms, the `eval()` function runs the python code (which is passed as an argument) within the program.
+
+```python
+x = 1
+print(eval('x + 1'))
+# output: 2
+```
+
+#### filter
+
+The filter() method constructs an iterator from elements of an iterable for which a function returns true. In simple words, `filter()` method filters the given iterable with the help of a function that tests each element in the iterable to be true or not.
+
+```python
+# list of letters
+letters = ['a', 'b', 'd', 'e', 'i', 'j', 'o']
+
+# function that filters vowels
+def filterVowels(letter):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+
+    if(letter in vowels):
+        return True
+    else:
+        return False
+
+filteredVowels = filter(filterVowels, letters)
+
+print('The filtered vowels are:')
+for vowel in filteredVowels:
+    print(vowel)
+
+#output: 
+The filtered vowels are:
+a
+e
+i
+o
 ```
