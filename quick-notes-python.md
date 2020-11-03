@@ -14,6 +14,82 @@
 
 **Instance Attributes**:  Unlike class attributes, instance attributes are not shared by objects. Every object has its own copy of the instance attribute
 
+### Abstract class
+
+A class which contains one or more abstract methods is called an abstract class. 
+
+An **abstract method** is a method that has a declaration but does not have an implementation. 
+
+Abstract classes may not be instantiated, and its abstract methods must be implemented by its subclasses. 
+
+When we want to provide a common interface for different implementations of a component, we use an abstract class.
+
+#### Abstract base class
+
+Python on its own doesn't provide abstract classes. Yet, Python comes with a module which provides the infrastructure for defining Abstract Base Classes (ABCs). 
+
+```python
+from abc import ABC, abstractmethod
+ 
+class AbstractClassExample(ABC):
+ 
+    def __init__(self, value):
+        self.value = value
+        super().__init__()
+    
+    @abstractmethod
+    def do_something(self):
+        pass
+```
+
+The above code creates an abstract class `AbstractClassExample` with an abstract method `do_something`. Which ever class inherits this abstract class has to implement the do_something method. Now we define two classes inheriting from our abstract class:
+
+```python
+class DoAdd42(AbstractClassExample):
+
+    def do_something(self):
+        return self.value + 42
+    
+class DoMul42(AbstractClassExample):
+   
+    def do_something(self):
+        return self.value * 42
+    
+x = DoAdd42(10)
+y = DoMul42(10)
+
+print(x.do_something())
+print(y.do_something())
+52
+420
+```
+
+A class that is derived from an abstract class cannot be instantiated unless all of its abstract methods are overridden.
+
+You may think that abstract methods can't be implemented in the abstract base class. This impression is wrong: *An abstract method can have an implementation in the abstract class!* Even if they are implemented, designers of subclasses will be forced to override the implementation. Like in other cases of "normal" inheritance, the abstract method can be invoked with **super()** call mechanism. This enables providing some basic functionality in the abstract method, which can be enriched by the subclass implementation.
+
+```python
+from abc import ABC, abstractmethod
+ 
+class AbstractClassExample(ABC):
+    
+    @abstractmethod
+    def do_something(self):
+        print("Some implementation!")
+        
+class AnotherSubclass(AbstractClassExample):
+
+    def do_something(self):
+        super().do_something()
+        print("The enrichment from AnotherSubclass")
+        
+x = AnotherSubclass()
+x.do_something()
+        
+Some implementation!
+The enrichment from AnotherSubclass
+```
+
 ### Lists 
 
 **Lists** are just like dynamic sized arrays. Lists need not be homogeneous always. A single list may contain DataTypes like Integers, Strings, as well as Objects. Lists are mutable, and hence, they can be altered even after their creation.
@@ -215,5 +291,49 @@ print(d)
 Output: {'A': 1, 'B': 2, 'C': 3}
 ```
 
+### Built-in functions
 
+#### all()
 
+The all() method returns True when all elements in the given iterable are true. If not, it returns False.
+
+```python
+# all values true
+l = [1, 3, 4, 5]
+print(all(l))
+# True
+# all values false
+l = [0, False]
+print(all(l))
+# False
+```
+
+#### any()
+
+The any() function returns True if any element of an iterable is True. If not, any() returns False.
+
+```python
+# True since 1,3 and 4 (at least one) is true
+l = [1, 3, 4, 0]
+print(any(l))
+# True
+# False since both are False
+l = [0, False]
+print(any(l))
+# False
+```
+
+#### abs()
+
+The abs() method returns the absolute value of the given number. If the number is a complex number, abs() returns its magnitude.
+
+```python
+# random integer
+integer = -20
+print('Absolute value of -20 is:', abs(integer))
+# 20
+# random complex number
+complex = (3 - 4j)
+print('Magnitude of 3 - 4j is:', abs(complex))
+# Magnitude of 3 - 4j is: 5.0
+```
