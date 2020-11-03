@@ -24,6 +24,8 @@ Abstract classes may not be instantiated, and its abstract methods must be imple
 
 When we want to provide a common interface for different implementations of a component, we use an abstract class.
 
+**Concrete classes** contain only concrete (normal)methods whereas abstract classes may contains both concrete methods and abstract methods.
+
 #### Abstract base class
 
 Python on its own doesn't provide abstract classes. Yet, Python comes with a module which provides the infrastructure for defining Abstract Base Classes (ABCs). 
@@ -147,6 +149,12 @@ While in dictionary this cannot be done. The position of the elements may vary. 
 ### Tuple
 
 Tuples are similar to list in terms of indexing. They are immutable lists which means that once a tuple is created you cannot delete or change the values of the items stored in it. You cannot add new values either. Tuples can hold both homogeneous as well as heterogeneous values. However, remember that once you declared those values, you cannot change them. Not only do they provide **"read-only"** access to the data values but **they are also faster than lists**.
+
+##### namedtuples
+
+First of all, namedtuples are immutable just like regular tuples. Once you store something in them you can’t modify it.
+
+Besides that, namedtuples are, well…*named tuples*. Each object stored in them can be accessed through a unique (human-readable) identifier. This frees you from having to remember integer indexes, or resorting to workarounds like defining integer constants as mnemonics for your indexes.
 
 ### Dictionaries
 
@@ -346,7 +354,6 @@ The map() function applies a given function to each item of an iterable (list, t
 def calculateSquare(n):
     return n*n
 
-
 numbers = (1, 2, 3, 4)
 result = map(calculateSquare, numbers)
 print(result)
@@ -400,4 +407,27 @@ a
 e
 i
 o
+```
+
+#### enumerate
+
+The enumerate() method adds counter to an iterable and returns it (the enumerate object).
+
+```python
+grocery = ['bread', 'milk', 'butter']
+enumerateGrocery = enumerate(grocery)
+
+print(type(enumerateGrocery))
+
+# converting to list
+print(list(enumerateGrocery))
+
+# changing the default counter
+enumerateGrocery = enumerate(grocery, 10)
+print(list(enumerateGrocery))
+
+# output: 
+<class 'enumerate'>
+[(0, 'bread'), (1, 'milk'), (2, 'butter')]
+[(10, 'bread'), (11, 'milk'), (12, 'butter')]
 ```
