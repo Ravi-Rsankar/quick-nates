@@ -8,11 +8,13 @@ cd my-app
 npm start
 ```
 
-#### What is virtual DOM? 
+#### How React works and What is virtual DOM? 
 
-**The virtual DOM (VDOM)** is an in-memory representation of Real DOM. The representation of a UI is kept in memory and synced with the “real” DOM. It’s a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation.
+React creates a virtual DOM. When state changes in a component it firstly runs a “**diffing**” algorithm, which identifies what has changed in the virtual DOM. The second step is **reconciliation**, where it updates the DOM with the results of diff.
 
-VDOM renders only the updated component instead of re-rendering the entire DOM. This is done by **diffing**. 
+The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. It is not invented by React but it uses it and provides it for free. `ReactElements` lives in the virtual DOM. They make the basic nodes here. Once we defined the elements, `ReactElements` can be render into the "real" DOM.
+
+Whenever a `ReactComponent` is changing the state, diff algorithm in React runs and identifies what has changed. And then it updates the DOM with the results of diff. The point is - it’s done faster than it would be in the regular DOM.
 
 #### What happens when you call "setState"? 
 
@@ -56,3 +58,62 @@ React.createElement(
 The answer is a big **NO**. React by itself doesn't require JSX. We could always use `React.createElement()` and not write JSX at all because it eventually is compiled to it.
 
 But, imagine having too many nested tags, or building a complex UI. Would you prefer the simplicity of what JSX offers or the complexity of using `React.createElement()` ? And there are not such real world benefits of not using JSX. So, the answer is pretty obvious I think.
+
+#### Props and State 
+
+The state is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.
+
+Props (short for properties) are a Component’s configuration. Props are how components talk to each other. They are received from above component and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components. Props do not have to just be data — callback functions may be passed in as props.
+
+There is also the case that we can have default props so that props are set even if a parent component doesn’t pass props down.
+
+Props and State do similar things but are used in different ways. The majority of our components will probably be stateless. Props are used to pass data from parent to child or by the component itself. They are immutable and thus will not be changed. State is used for mutable data, or data that will change. This is particularly useful for user input.
+
+#### Key attribute
+
+Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li key={number.toString()}>    {number}
+  </li>
+);
+```
+
+The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
+
+```javascript
+const todoItems = todos.map((todo) =>
+  <li key={todo.id}>    {todo.text}
+  </li>
+);
+```
+
+When you don’t have stable IDs for rendered items, you may use the item index as a key as a last resort:
+
+```javascript
+const todoItems = todos.map((todo, index) =>
+  // Only do this if items have no stable IDs  <li key={index}>    {todo.text}
+  </li>
+);
+```
+
+We don’t recommend using indexes for keys if the order of items may change.
+
+#### Controlled and Uncontrolled component
+
+A controlled component doesn't have its own local state and it receives all the data via props and raises events whenever data needs to be changed. This component is entirely controlled by its parent. You could also call this a "dumb component". This is also referred as **single source of truth**
+
+An uncontrolled component is one that stores its own state internally, and you query the DOM using a `ref` to find its current value when you need it. This is a bit more like traditional HTML.
+
+```js
+// Controlled:
+<input type="text" value={value} onChange={handleChange} />
+
+// Uncontrolled:
+<input type="text" defaultValue="foo" ref={inputRef} />
+// Use `inputRef.current.value` to read the current value of <input>
+```
+
+In most or all cases, you should use controlled components. 
