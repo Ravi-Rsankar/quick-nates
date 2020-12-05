@@ -112,6 +112,23 @@ Other than `append()` and `insert()` methods, there’s one more method for Addi
 
 In Python, negative sequence indexes represent positions from the end of the array. Instead of having to compute the offset as in `List[len(List)-3]`, it is enough to just write `List[-3]`. Negative indexing means beginning from the end, -1 refers to the last item, -2 refers to the second-last item, etc.
 
+##### sort
+
+List can be sorted in 2 ways.
+
+Using **sort()** 
+
+`list.sort(key=..., reverse=...)`
+
+Using **sorted()**
+
+```python
+sorted(list, key=..., reverse=...)
+```
+
+- **reverse** - If `True`, the sorted list is reversed (or sorted in Descending order)
+- **key** - function that serves as a key for the sort comparison
+
 ### Sets 
 
 A Set is an ***unordered*** collection, sets do not record element position or order of insertion. Accordingly, sets do not support indexing, slicing, or other sequence-like behavior. 
