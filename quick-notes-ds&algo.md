@@ -1,4 +1,4 @@
-# Quick-notes: Data structures
+# Quick-notes: Data structures & Algorithms
 
 ## Linked List
 
@@ -26,3 +26,10 @@ Each node in a list consists of at least two parts:
 1) data
 2) Pointer (Or Reference) to the next node
 
+## Sorting Algorithm
+
+### Merge Sort
+
+Divide the input array into two halves and recursively divides the resultant array into two halves until the length of array is one(only one element present). Then sorts the array and merges it
+
+![MergeSort](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Merge-Sort-Tutorial.png)
