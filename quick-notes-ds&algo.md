@@ -155,7 +155,7 @@ Other data structures such as arrays, linked list, stack, and queue are linear d
 
    The children are referred to as **left** child or **right** child. This is one of the most commonly used trees. When certain constraints and properties are imposed on Binary tree it results in a number of other widely used trees like BST (Binary Search Tree), AVL tree, RBT tree etc.
 
-   <img src="https://cdn.programiz.com/sites/tutorial2program/files/binary-tree_0.png" alt="binary-tree" style="zoom:50%;" />
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/binary-tree_0.png" alt="binary-tree" style="zoom:33%;" />
 
    Read about types of Binary Tree [here](https://www.programiz.com/dsa/binary-tree)
 
@@ -173,7 +173,7 @@ Other data structures such as arrays, linked list, stack, and queue are linear d
 
    *Balance Factor = (Height of Left Subtree - Height of Right Subtree) or (Height of Right Subtree - Height of Left Subtree)*
 
-   <img src="https://cdn.programiz.com/sites/tutorial2program/files/avl-tree-final-tree-1_0_2.png" alt="avl-tree" style="zoom:50%;" />
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/avl-tree-final-tree-1_0_2.png" alt="avl-tree" style="zoom:33%;" />
 
 5. **Red black tree**
 
@@ -187,7 +187,7 @@ Other data structures such as arrays, linked list, stack, and queue are linear d
    4. **Red Property:** If a red node has children then, the children are always black.
    5. **Depth Property:** For each node, any simple path from this node to any of its descendant leaf has the same black-depth (the number of black nodes).
 
-   <img src="https://cdn.programiz.com/sites/tutorial2program/files/red-black-tree_0.png" alt="red-black-tree" style="zoom:50%;" />
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/red-black-tree_0.png" alt="red-black-tree" style="zoom:33%;" />
 
    Read more about Red-Black Tree [here](https://www.programiz.com/dsa/red-black-tree)
 
