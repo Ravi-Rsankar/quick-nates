@@ -119,6 +119,26 @@ When the top element of a stack is deleted, if the stack remains non-empty, then
 - Do not consume a fixed amount of memory
 - Size of stack changes with each push() and pop() operation. Each push() and pop() operation increases and decreases the size of the stack by 1, respectively.
 
+### Tree
+
+A tree is a nonlinear hierarchical data structure that consists of nodes connected by edges.
+
+A Quick terminology walkthrough
+
+- **Root** is the topmost `node` of the `tree`
+- **Edge** is the link between two `nodes`
+- **Child** is a `node` that has a `parent node`
+- **Parent** is a `node` that has an `edge` to a `child node`
+- **Leaf** is a `node` that does not have a `child node` in the `tree`
+- **Height** is the length of the longest path to a `leaf`
+- **Depth** is the length of the path to its `root`
+
+**Why Tree datastructure?**
+
+Other data structures such as arrays, linked list, stack, and queue are linear data structures that store data sequentially. In order to perform any operation in a linear data structure, the time complexity increases with the increase in the data size.
+
+[8 Useful Tree Data Structures | Towards Data Science](https://towardsdatascience.com/8-useful-tree-data-structures-worth-knowing-8532c7231e8c)
+
 ## Algorithms
 
 ### Sorting Algorithm
@@ -290,3 +310,4 @@ In terms of implementation, BFS is usually implemented with `Queue`, while DFS u
 Draw a small graph on a piece of paper and think about the order in which nodes are processed in each implementation. How does the order in which you encounter the nodes and the order in which you process the nodes differ between the searches?
 
 One of them uses a stack (depth-first) and the other uses a queue (breadth-first) (for non-recursive implementations, at least).
+
