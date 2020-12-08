@@ -28,6 +28,97 @@ Each node in a list consists of at least two parts:
 1) data
 2) Pointer (Or Reference) to the next node
 
+### Queue
+
+Queues are data structures that follow the **First In First Out (FIFO)** i.e. the first element that is added to the queue is the first one to be removed.
+
+Elements are always added to the back and removed from the front. 
+
+**Variables used**
+
+- queue[]: Array in which queue is simulated
+- arraySize: Maximum number of elements that can be stored in a queue[]
+- front: Points at the index where the next deletion will be performed
+- rear: Points at the index where the next insertion will be performed
+
+**Functions supported**
+
+Queues support the following fundamental functions:
+
+**Enqueue**
+
+If the queue is not full, this function adds an element to the back of the queue, else it prints “**OverFlow**”.
+
+```java
+void enqueue(int queue[], int element, int& rear, int arraySize) {
+    if(rear == arraySize)            // Queue is full
+            printf(“OverFlow\n”);
+    else{
+         queue[rear] = element;    // Add the element to the back
+         rear++;
+    }
+}
+```
+
+**Dequeue**
+
+If the queue is not empty, this function removes the element from the front of the queue, else it prints “**UnderFlow**”.
+
+```java
+void dequeue(int queue[], int& front, int rear) {
+    if(front == rear)            // Queue is empty
+        printf(“UnderFlow\n”);
+    else {
+        queue[front] = 0;        // Delete the front element
+        front++;
+    }
+}
+```
+
+**Front**
+
+This function returns the front element of the queue.
+
+**Size**
+
+This function returns the size of a queue or the number of elements in a queue.
+
+**IsEmpty**
+
+If a queue is empty, this function returns 'true', else it returns 'false'.
+
+The standard queue data structure has the following variations:
+
+1. Double-ended queue
+2. Circular queue
+
+**Double-ended queue**
+
+In a standard queue, a character is inserted at the back and deleted in the front. However, in a double-ended queue, characters can be inserted and deleted from both the front and back of the queue.
+
+**Circular queues**
+
+A circular queue is an improvement over the standard queue structure. In a standard queue, when an element is deleted, the vacant space is not reutilized. However, in a circular queue, vacant spaces are reutilized.
+
+While inserting elements, when you reach the end of an array and you need to insert another element, you must insert that element at the beginning (given that the first element has been deleted and the space is vacant).
+
+### Stack
+
+Stacks are dynamic data structures that follow the **Last In First Out (LIFO)** principle. The last item to be inserted into a stack is the first one to be deleted from it.
+
+**Inserting and deleting elements**
+
+Stacks have restrictions on the insertion and deletion of elements. Elements can be inserted or deleted only from one end of the stack i.e. from the top. The element at the top is called the **top** element. The operations of inserting and deleting elements are called **push()** and **pop()** respectively.
+
+When the top element of a stack is deleted, if the stack remains non-empty, then the element just below the previous top element becomes the new top element of the stack.
+
+**Features of stacks**
+
+- Dynamic data structures
+- Do not have a fixed size
+- Do not consume a fixed amount of memory
+- Size of stack changes with each push() and pop() operation. Each push() and pop() operation increases and decreases the size of the stack by 1, respectively.
+
 ## Algorithms
 
 ### Sorting Algorithm
