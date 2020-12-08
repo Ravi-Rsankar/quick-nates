@@ -137,7 +137,61 @@ A Quick terminology walkthrough
 
 Other data structures such as arrays, linked list, stack, and queue are linear data structures that store data sequentially. In order to perform any operation in a linear data structure, the time complexity increases with the increase in the data size.
 
-[8 Useful Tree Data Structures | Towards Data Science](https://towardsdatascience.com/8-useful-tree-data-structures-worth-knowing-8532c7231e8c)
+**Properties**
+
+- Every tree has a special node called the root node. The root node can be used to traverse every node of the tree. It is called root because the tree originated from root only.
+- If a tree has N vertices(nodes) than the number of edges is always one less than the number of nodes(vertices) i.e N-1. If it has more than N-1 edges it is called a graph not a tree.
+- Every child has only a single Parent but Parent can have multiple child.
+
+**Types of trees**
+
+1. **General tree**
+
+   A tree is called a general tree when there is no constraint imposed on the hierarchy of the tree. In General Tree, each node can have infinite number of children. This tree is the super-set of all other types of trees. 
+
+2. **Binary tree**
+
+   Binary tree is the type of tree in which each parent can have at most **two children**. 
+
+   The children are referred to as **left** child or **right** child. This is one of the most commonly used trees. When certain constraints and properties are imposed on Binary tree it results in a number of other widely used trees like BST (Binary Search Tree), AVL tree, RBT tree etc.
+
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/binary-tree_0.png" alt="binary-tree" style="zoom:50%;" />
+
+   Read about types of Binary Tree [here](https://www.programiz.com/dsa/binary-tree)
+
+3. **Binary search tree**
+
+   Binary Search Tree (BST) is an extension of Binary tree with some added constraints. In BST, the value of the left child of a node must be smaller than or equal to the value of its parent and the value of the right child is always larger than or equal to the value of its parent. This property of Binary Search Tree makes it suitable for searching operations as at each node we can decide accurately whether the value will be in left subtree or right subtree. Therefore, it is called a Search Tree.
+
+   
+
+4. **AVL tree**
+
+   AVL tree is a self-balancing binary search tree in which each node maintains extra information called a balance factor whose value is either -1, 0 or +1.
+
+   AVL tree got its name after its inventor Georgy Adelson-Velsky and Landis.
+
+   *Balance Factor = (Height of Left Subtree - Height of Right Subtree) or (Height of Right Subtree - Height of Left Subtree)*
+
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/avl-tree-final-tree-1_0_2.png" alt="avl-tree" style="zoom:50%;" />
+
+5. **Red black tree**
+
+   Red-Black tree is a self-balancing binary search tree in which each node contains an extra bit for denoting the color of the node, either red or black.
+
+   A red-black tree satisfies the following properties:
+
+   1. **Red/Black Property:** Every node is colored, either red or black.
+   2. **Root Property:** The root is black.
+   3. **Leaf Property:** Every leaf (NIL) is black.
+   4. **Red Property:** If a red node has children then, the children are always black.
+   5. **Depth Property:** For each node, any simple path from this node to any of its descendant leaf has the same black-depth (the number of black nodes).
+
+   <img src="https://cdn.programiz.com/sites/tutorial2program/files/red-black-tree_0.png" alt="red-black-tree" style="zoom:50%;" />
+
+   Read more about Red-Black Tree [here](https://www.programiz.com/dsa/red-black-tree)
+
+Also check [8 Useful Tree Data Structures | Towards Data Science](https://towardsdatascience.com/8-useful-tree-data-structures-worth-knowing-8532c7231e8c)
 
 ## Algorithms
 
