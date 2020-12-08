@@ -1,6 +1,8 @@
 # Quick-notes: Data structures & Algorithms
 
-## Linked List
+## Data-Structures
+
+### Linked List
 
 Like arrays, Linked List is a linear data structure. Unlike arrays, linked list elements are not stored at a contiguous location; the elements are linked using pointers.
 
@@ -26,10 +28,23 @@ Each node in a list consists of at least two parts:
 1) data
 2) Pointer (Or Reference) to the next node
 
-## Sorting Algorithm
+## Algorithms
 
-### Merge Sort
+### Sorting Algorithm
+
+#### Merge Sort
 
 Divide the input array into two halves and recursively divides the resultant array into two halves until the length of array is one(only one element present). Then sorts the array and merges it
 
-![MergeSort](https://media.geeksforgeeks.org/wp-content/cdn-uploads/Merge-Sort-Tutorial.png)
+![MergeSort]()
+
+### Breadth First Search
+
+There are many ways to traverse graphs. BFS is the most commonly used approach.
+
+BFS is a traversing algorithm where you should start traversing from a selected node (source or starting node) and traverse the graph layerwise thus exploring the neighbor nodes (nodes which are directly connected to source node). You must then move towards the next-level neighbor nodes.
+
+As the name BFS suggests, you are required to traverse the graph breadthwise as follows:
+
+1. First move horizontally and visit all the nodes of the current layer
+2. Move to the next layer
