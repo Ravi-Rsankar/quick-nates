@@ -63,7 +63,7 @@ To make this process easy, use a queue to store the node and mark it as 'visited
 
 **Pseudocode**
 
-```
+```pseudocode
 BFS (G, s)                   //Where G is the graph and s is the source node
       let Q be queue.
       Q.enqueue( s ) //Inserting s in queue until all its neighbour vertices are marked.
@@ -136,3 +136,66 @@ The traversing will start from the source node and push *s* in queue. *s* will b
 - 3 is ignored because it is already marked as 'visited'
 
 The queue is empty and it comes out of the loop. All the nodes have been traversed by using BFS.
+
+### Depth First Search
+
+The DFS algorithm is a recursive algorithm that uses the idea of backtracking. It involves exhaustive searches of all the nodes by going ahead, if possible, else by backtracking.
+
+Here, the word backtrack means that when you are moving forward and there are no more nodes along the current path, you move backwards on the same path to find nodes to traverse. All the nodes will be visited on the current path till all the unvisited nodes have been traversed after which the next path will be selected.
+
+This recursive nature of DFS can be implemented using stacks. The basic idea is as follows:
+
+- Pick a starting node and push all its adjacent nodes into a stack.
+- Pop a node from stack to select the next node to visit and push all its adjacent nodes into a stack.
+- Repeat this process until the stack is empty. However, ensure that the nodes that are visited are marked. This will prevent you from visiting the same node more than once. If you do not mark the nodes that are visited and you visit the same node more than once, you may end up in an infinite loop.
+
+**Pseudocode**
+
+```pseudocode
+    DFS-iterative (G, s):                                   //Where G is graph and s is source vertex
+      let S be stack
+      S.push( s )            //Inserting s in stack 
+      mark s as visited.
+      while ( S is not empty):
+          //Pop a vertex from stack to visit next
+          v  =  S.top( )
+         S.pop( )
+         //Push all the neighbours of v in stack that are not visited   
+        for all neighbours w of v in Graph G:
+            if w is not visited :
+                     S.push( w )         
+                    mark w as visited
+
+
+    DFS-recursive(G, s):
+        mark s as visited
+        for all neighbours w of s in Graph G:
+            if w is not visited:
+                DFS-recursive(G, w)
+```
+
+
+
+![dfs-traversal](https://he-s3.s3.amazonaws.com/media/uploads/9fa1119.jpg)
+
+
+
+### BFS vs DFS
+
+**BFS**: *Proceeds 'level by level', visiting all nodes on one level before moving to the next*.
+
+BFS is going to use more memory depending on the branching factor, however, BFS is a complete algorithm meaning if you are using it to search for something in the lowest depth possible, BFS will give you the optimal solution. BFS space complexity is `O(b^d)` the branching factor raised to the depth (can be A LOT of memory).
+
+**DFS**: *Follows a path from starting node to an ending node, then another path from start to end and so on, until all the nodes are visited.*
+
+DFS on the other hand, is much better about space however it may find a suboptimal solution. Meaning, if you are just searching for a path from one vertex to another, you may find the suboptimal solution (and stop there) before you find the real shortest path. DFS space complexity is `O(|V|)`... meaning that the most memory it can take up is the longest possible path.
+
+They have the same time complexity.
+
+In terms of implementation, BFS is usually implemented with `Queue`, while DFS uses a `Stack`.
+
+**How is the data structure chosen for the implementation**
+
+Draw a small graph on a piece of paper and think about the order in which nodes are processed in each implementation. How does the order in which you encounter the nodes and the order in which you process the nodes differ between the searches?
+
+One of them uses a stack (depth-first) and the other uses a queue (breadth-first) (for non-recursive implementations, at least).
