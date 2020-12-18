@@ -1,6 +1,6 @@
 # Quick-notes: JavaScript
 
-#### JS execution
+## JS execution
 
 hat the JS engine does when we run the code.
 
@@ -9,7 +9,7 @@ hat the JS engine does when we run the code.
 
 **Hoisting** is basically the JS Engine set-asides memory space for variables and functions used inside the code before your code is executed. These variables & functions comprise the Execution Context of any function that is being executed.
 
-#### Call stack
+## Call stack
 
 JavaScript engine uses a **call stack** to manage [execution contexts](https://www.javascripttutorial.net/javascript-execution-context/): the Global Execution Context and Function Execution Contexts.
 
@@ -25,7 +25,7 @@ When the current function completes, the JavaScript engine pops it off the call 
 
 The script will stop when the call stack is empty.
 
-#### Synchronous and Asynchronous
+## Synchronous and Asynchronous
 
 JavaScript is the **single-threaded** programming language. The JavaScript engine has only one call stack so that it only can do one thing at a time.
 
@@ -33,7 +33,7 @@ When executing a script, the JavaScript engine executes code from top to bottom,
 
 Asynchronous is the opposite of synchronous, which means happening at the same time. So how does JS manage to perform asynchronous operations?  **Callbacks**
 
-#### Callbacks
+## Callbacks
 
 In JavaScript, a callback is a [function](https://www.javascripttutorial.net/javascript-function/) passed into another function as an argument to be executed later. In JS, functions are objects, so we can pass function as object to other function and call that inside the outer function. 
 
@@ -57,13 +57,13 @@ doSomething1(arg1, (err, data1) => {
 
 To avoid the pyramid of doom, you use [promises](https://www.javascripttutorial.net/es6/javascript-promises/) or [async/await](https://www.javascripttutorial.net/es-next/javascript-async-await/) functions.
 
-#### Event Loop
+## Event Loop
 
 The event loop is a constantly running process that monitors both the callback queue and the call stack.
 
 If the call stack is not empty, the event loop waits until it is empty and places the next function from the callback queue to the call stack. If the callback queue is empty, nothing will happen
 
-#### Promises
+## Promises
 
 A promise is an object which keeps track of whether the asynchronous event has happened already or not and determines what happens after the event has occurred.
 
@@ -71,13 +71,13 @@ Instead of providing a callback, a promise has its own methods (resolved or reje
 
 It can be in three states, fulfilled, pending or rejected. It helps to catch all the errors that occurred after rejection or attach a callback to the handle of the fulfilled value.
 
-#### Boolean in JS
+## Boolean in JS
 
-In javascript logical operators can be applied to non boolean values also. A condition true && "Hi" will execute without any errors. The result of the above command will be 'Hi', meaning both the conditions are true.
+In JavaScript logical operators can be applied to non Boolean values also. A condition true && "Hi" will execute without any errors. The result of the above command will be 'Hi', meaning both the conditions are true.
 
-In javascript, empty string is evaluated as false when applied to a logical operator. Similarly the number 0 means false
+In JavaScript, empty string is evaluated as false when applied to a logical operator. Similarly the number 0 means false
 
-#### Array functions
+## Array functions
 
 ##### map
 
