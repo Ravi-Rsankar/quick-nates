@@ -1,6 +1,6 @@
 # Quick-notes: Python
 
-### Name some characteristics of Python?
+## Name some characteristics of Python?
 
 - Python is an **interpreted language**. That means that, unlike languages like C and its variants, Python does not need to be compiled before it is run. Other interpreted languages include *PHP* and *Ruby*.
 - Python is **dynamically typed**, this means that you don't need to state the types of variables when you declare them or anything like that. You can do things like `x=111` and then `x="I'm a string"` without error
@@ -8,13 +8,13 @@
 - In Python, **functions are first-class objects**. This means that they can be assigned to variables, returned from other functions and passed into functions. Classes are also first class objects
 - Writing Python code is quick but running it is **often slower than compiled languages**. Fortunately, Python allows the inclusion of C based extensions so bottlenecks can be optimized away and often are. The `numpy` package is a good example of this, it's really quite quick because a lot of the number crunching it does isn't actually done by Python
 
-### Attributes in Python
+## Attributes in Python
 
 **Class Attributes**: Belong to the class itself. They will be shared by all the instances. All object refer to single copy
 
 **Instance Attributes**:  Unlike class attributes, instance attributes are not shared by objects. Every object has its own copy of the instance attribute
 
-### Abstract class
+## Abstract class
 
 A class which contains one or more abstract methods is called an abstract class. 
 
@@ -91,6 +91,8 @@ x.do_something()
 Some implementation!
 The enrichment from AnotherSubclass
 ```
+
+## Data-Structures in Python
 
 ### Lists 
 
@@ -267,7 +269,7 @@ id(n_tuple[2])
   because in tuples for indexing it follows fewer pointers.
 - Tuples can't be sorted
 
-### Zip function
+## Zip function
 
 The purpose of zip() is to **map the similar index of multiple containers** so that they can be used just using as single entity. The function takes in [iterables](https://docs.python.org/3/glossary.html#term-iterable) as arguments and returns an **iterator**. This iterator generates a series of tuples. If you use `zip()` with `n` arguments, then the function will return an iterator that generates tuples of length `n`. 
 
@@ -298,7 +300,7 @@ list(zipped)
 Output: [(1,), (2,), (3,)]
 ```
 
-#### Passing arguments of unequal length
+### Passing arguments of unequal length
 
 The number of elements that `zip()` puts out will be equal to the length of the *shortest* iterable. The remaining elements in any longer iterables will be totally ignored by `zip()`, as you can see here:
 
@@ -307,7 +309,7 @@ list(zip(range(5), range(100)))
 [(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]
 ```
 
-#### Building dictionaries
+### Building dictionaries
 
 ```python
 z = zip(['A', 'B', 'C'], [1,2,3])
@@ -316,9 +318,9 @@ print(d)
 Output: {'A': 1, 'B': 2, 'C': 3}
 ```
 
-### Built-in functions
+## Built-in functions
 
-#### all
+### all
 
 The all() method returns True when all elements in the given iterable are true. If not, it returns False.
 
@@ -333,7 +335,7 @@ print(all(l))
 # False
 ```
 
-#### any
+### any
 
 The any() function returns True if any element of an iterable is True. If not, any() returns False.
 
@@ -348,7 +350,7 @@ print(any(l))
 # False
 ```
 
-#### abs
+### abs
 
 The abs() method returns the absolute value of the given number. If the number is a complex number, abs() returns its magnitude.
 
@@ -363,7 +365,7 @@ print('Magnitude of 3 - 4j is:', abs(complex))
 # Magnitude of 3 - 4j is: 5.0
 ```
 
-#### map
+### map
 
 The map() function applies a given function to each item of an iterable (list, tuple etc.) and returns a list of the results.
 
@@ -385,7 +387,7 @@ print(numbersSquare)
 {16, 1, 4, 9}
 ```
 
-#### eval
+### eval
 
 The eval() method parses the expression passed to this method and runs python expression (code) within the program. In simple terms, the `eval()` function runs the python code (which is passed as an argument) within the program.
 
@@ -395,7 +397,7 @@ print(eval('x + 1'))
 # output: 2
 ```
 
-#### filter
+### filter
 
 The filter() method constructs an iterator from elements of an iterable for which a function returns true. In simple words, `filter()` method filters the given iterable with the help of a function that tests each element in the iterable to be true or not.
 
@@ -426,7 +428,7 @@ i
 o
 ```
 
-#### enumerate
+### enumerate
 
 The enumerate() method adds counter to an iterable and returns it (the enumerate object).
 
@@ -448,3 +450,49 @@ print(list(enumerateGrocery))
 [(0, 'bread'), (1, 'milk'), (2, 'butter')]
 [(10, 'bread'), (11, 'milk'), (12, 'butter')]
 ```
+
+## Shallow and Deep copy
+
+In Python, Assignment statements do not copy objects, they create bindings between a target and an object. When we use `=` operator user thinks that this creates a new object; well, it doesn’t. It only creates a new variable that shares the reference of the original object.
+
+```python
+l1 = [1,2,3,4,5]
+l1 = l2
+l2[1] = 7
+print(l1)
+print(l2)
+# OUTPUT: 
+# [1, 7, 3, 4, 5]
+# [1, 7, 3, 4, 5]
+```
+
+A **shallow copy** means constructing a new collection object and then populating it with references to the child objects found in the original. In essence, a shallow copy is only *one level deep*. The copying process does not [recurse](https://realpython.com/python-thinking-recursively/) and therefore won’t create copies of the child objects themselves.
+
+```python
+l1 = [[1,2,3], [4,5,6], [7,8,9]]
+l2 = copy.copy(l1)
+l2.append([3,4,5])
+
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9], [3, 4, 5]]
+
+l2[0][1] = 4
+# [[1, 4, 3], [4, 5, 6], [7, 8, 9]]
+# [[1, 4, 3], [4, 5, 6], [7, 8, 9], [3, 4, 5]]
+```
+
+Shallow copies can only reflect till the first level. So appending a value in the first level works fine. Whereas modifying an element in more than one level deep will change the original array also as the child elements refer to the same reference. 
+
+A **deep copy** makes the copying process recursive. It means first constructing a new collection object and then recursively populating it with copies of the child objects found in the original. Copying an object this way walks the whole object tree to create a fully independent clone of the original object and all of its children.
+
+```python
+l3 = [[1,2,3], [4,5,6], [7,8,9]]
+l4 = copy.deepcopy(l3)
+
+l4[0][1] = 4
+
+# [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# [[1, 4, 3], [4, 5, 6], [7, 8, 9]]
+```
+
+​	
