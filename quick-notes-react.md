@@ -22,11 +22,14 @@ The first thing React will do when setState is called is merge the object you pa
 
 By doing this, React will then know the exact changes which occurred, and by knowing exactly what changes occurred, will able to minimize its footprint on the UI by only making updates where absolutely necessary.
 
-## What is the difference between state and props?
+this.setState() is only be called when a component is rendered and placed in the DOM. If the state needs to be set while loading the component with the values from the props, it can be done inside the constructor. 
 
-The *state* is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.
-
-*Props* (short for properties) are a Component's configuration. They are received from above and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components. Props do not have to just be data - callback functions may be passed in as props.
+```react
+constructor(){
+super()
+this.state = this.props.something
+}
+```
 
 ## What is hot loading
 
@@ -68,6 +71,42 @@ Props (short for properties) are a Component’s configuration. Props are how co
 There is also the case that we can have default props so that props are set even if a parent component doesn’t pass props down.
 
 Props and State do similar things but are used in different ways. The majority of our components will probably be stateless. Props are used to pass data from parent to child or by the component itself. They are immutable and thus will not be changed. State is used for mutable data, or data that will change. This is particularly useful for user input.
+
+## Components
+
+Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+
+Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+
+## Functional components and Class components
+
+A **functional**(a.k.a. **stateless**) component is just a plain javascript function which takes props as an argument and returns a react element. It accepts a single “props” object argument with data and returns a React element.
+
+A stateless component has no state, it means that you can’t reach `this.state` inside it. It also has no lifecycle so you can’t use componentDidMount. Also `this.props` wont work in functional component and the `props` needs to passed as an argument to the function. 
+
+```react
+const MyStatelessComponent = props => <div>{props.name}</div>;
+```
+
+A **class** component has a state, lifecycle hooks and it is a javascript class which means that React creates instances of it. React should initialise the component class in order to call lifecycle hooks, call a constructor, initialise state and more.
+
+```react
+class MyComponentClass extends React.Component {
+  render() {
+    return <div>{this.props.name}</div>;
+  }
+}
+```
+
+### When should you use a stateless component:
+
+A stateless component(or dumb) is just presentation of the state(props). It only can render props and it should only do that. A good example is a button component
+
+You don’t need to have a state, lifecycle hooks or any internal variables inside a button component, you just simply need to render that.
+
+### When should you use a class component:
+
+if your component needs some data which cannot be passed as a prop use class component to get that data. If you need to keep UI state in your component(expandable blocks) so it’s a good place to keep that info in a components state.
 
 ## Key attribute
 
@@ -118,3 +157,34 @@ An uncontrolled component is one that stores its own state internally, and you q
 ```
 
 In most or all cases, you should use controlled components. 
+
+## Lifecycle hooks
+
+The component goes through few phases during their lifecycle. Each lifecycle has few methods which allow us to hook into certain moment during the lifecycle. The following are some frequently used lifecycle and their hooks.
+
+### Mount
+
+This is when an instance of a component is created and inserted into the DOM. React calls the below methods in order whenever the app is mounted
+
+#### constructor
+
+#### render
+
+#### componentDidMount
+
+### Update
+
+Whenever the state is updated react calls the below methods in order.
+
+#### render
+
+#### componentDidUpdate
+
+### Unmount
+
+Component is removed from the DOM or is deleted. 
+
+#### componentWillUnmount
+
+
+
