@@ -35,7 +35,7 @@ Asynchronous is the opposite of synchronous, which means happening at the same t
 
 ## Callbacks
 
-In JavaScript, a callback is a [function](https://www.javascripttutorial.net/javascript-function/) passed into another function as an argument to be executed later. In JS, functions are objects, so we can pass function as object to other function and call that inside the outer function. 
+In JavaScript, a callback is a function passed into another function as an argument to be executed later. In JS, functions are objects, so we can pass function as object to other function and call that inside the outer function. 
 
 A function which can be passed as an argument to the higher-order functions and can return function. The argument passed as a function to the higher-order function is called as a callback.
 
@@ -70,6 +70,60 @@ A promise is an object which keeps track of whether the asynchronous event has h
 Instead of providing a callback, a promise has its own methods (resolved or rejected), which you call to tell the promise what will happen when it is successful or when it fails.
 
 It can be in three states, fulfilled, pending or rejected. It helps to catch all the errors that occurred after rejection or attach a callback to the handle of the fulfilled value.
+
+## Async / Await
+
+There’s a special syntax to work with promises in a more comfortable fashion, called “async/await”.  The `async` and `await` keywords enable asynchronous, promise-based behavior to be written in a cleaner style, avoiding the need to explicitly configure promise chains.
+
+### Async functions
+
+The word “async” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically.
+
+For instance, this function returns a resolved promise with the result of `1`; let’s test it:
+
+```javascript
+async function f() { 
+	return 1; 
+} 
+
+f().then(alert); // 1
+```
+
+We could explicitly return a promise, which would be the same:
+
+```javascript
+async function f() {
+  return Promise.resolve(1);
+}
+
+f().then(alert); // 1
+```
+
+So, `async` ensures that the function returns a promise, and wraps non-promises in it.
+
+### Await 
+
+The keyword`await` literally suspends the function execution until the promise settles, and then resumes it with the promise result. 
+
+The `await` keyword is only valid inside async functions. If you use it outside of an async function's body, you will get a `SyntaxError`.
+
+```javascript
+// works only inside async functions
+let value = await promise;
+```
+
+Note how the promise chain is not built-up in one go. Instead, the promise chain is constructed in stages as control is successively yielded from and returned to the async function. As a result, we must be mindful of error handling behavior when dealing with concurrent asynchronous operations.
+
+```javascript
+async function foo() {
+   const p1 = new Promise((resolve) => setTimeout(() => resolve('1'), 1000))
+   const p2 = new Promise((_,reject) => setTimeout(() => reject('2'), 500))
+   const results = [await p1, await p2] // Do not do this! Use Promise.all or Promise.allSettled instead.
+}
+foo().catch(() => {}) // Attempt to swallow all errors...
+```
+
+If you wish to safely perform two or more jobs in parallel, you must await a call to `Promise.all`, or `Promise.allSettled`.
 
 ## Boolean in JS
 
