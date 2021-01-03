@@ -501,24 +501,16 @@ On the whole, both Flask and Django are widely used open source web frameworks f
 
 ### Falcon web frame
 
-**Falcon** is a reliable, high-performance **Python** web framework for building large-scale app backends and microservices. It encourages the REST architectural style, and tries to do as little as possible while remaining highly effective.
+Falcon is like Flask, a light-weight microframework written in Python for building web APIs and app backends. Unlike Flask, the main focus of Falcon is on REST apis though as it is not suitable for serving HTML pages at all. It has a clean design that embraces HTTP and the REST architectural style.
 
 ```python
-class QuoteResource:
+import falcon
 
+class HelloResource:
     def on_get(self, req, resp):
-        """Handles GET requests"""
-        quote = {
-            'quote': (
-                "I've always been more interested in "
-                "the future than in the past."
-            ),
-            'author': 'Grace Hopper'
-        }
-
-        resp.media = quote
-
+        resp.status = falcon.HTTP_200
+        resp.body = 'Hello World!'
 
 api = falcon.API()
-api.add_route('/quote', QuoteResource())
+api.add_route('/', HelloResource())
 ```
