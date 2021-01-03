@@ -186,11 +186,7 @@ Besides that, namedtuples are, well…*named tuples*. Each object stored in them
 
 **Defaultdict** is a container like dictionaries present in the module **collections**. Defaultdict is a sub-class of the `dict` class that returns a dictionary-like object. The functionality of both dictionaries and defualtdict are almost same except for the fact that defualtdict never raises a `KeyError`. It provides a default value for the key that does not exists. The default value has to be defined on the creation of the dictionary. 
 
-### Flask Vs Django
-
-On the whole, both Flask and Django are widely used open source web frameworks for Python. Django is a full-stack web framework, whereas Flask is a micro and lightweight web framework. The features provided by Django help developers to build large and complex web applications. On the other hand, Flask accelerates development of simple web applications by providing the required functionality. Hence, the developers must keep in mind the needs of individual projects while comparing Flask and Django.
-
-### What does immutable really mean
+## What does immutable really mean
 
 According to the official Python documentation, immutable is 'an object with a fixed value', but 'value' is a rather vague term, the correct term for tuples would be 'id'. 'id' is the identity of the location of an object in memory. The id will be different for different values of a variable. If the value is same then the location and hence the id will be same. Immutability is checked using this id.
 
@@ -239,7 +235,7 @@ id(n_tuple[2])
 4359711048
 ```
 
-### Data structure comparison 
+## Data structure comparison 
 
 **List**
 
@@ -495,4 +491,34 @@ l4[0][1] = 4
 # [[1, 4, 3], [4, 5, 6], [7, 8, 9]]
 ```
 
-​	
+
+
+## Python Frameworks
+
+### Flask Vs Django
+
+On the whole, both Flask and Django are widely used open source web frameworks for Python. Django is a full-stack web framework, whereas Flask is a micro and lightweight web framework. The features provided by Django help developers to build large and complex web applications. On the other hand, Flask accelerates development of simple web applications by providing the required functionality. Hence, the developers must keep in mind the needs of individual projects while comparing Flask and Django.
+
+### Falcon web frame
+
+**Falcon** is a reliable, high-performance **Python** web framework for building large-scale app backends and microservices. It encourages the REST architectural style, and tries to do as little as possible while remaining highly effective.
+
+```python
+class QuoteResource:
+
+    def on_get(self, req, resp):
+        """Handles GET requests"""
+        quote = {
+            'quote': (
+                "I've always been more interested in "
+                "the future than in the past."
+            ),
+            'author': 'Grace Hopper'
+        }
+
+        resp.media = quote
+
+
+api = falcon.API()
+api.add_route('/quote', QuoteResource())
+```

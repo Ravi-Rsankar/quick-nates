@@ -185,6 +185,3 @@ Whenever the state is updated react calls the below methods in order.
 Component is removed from the DOM or is deleted. 
 
 #### componentWillUnmount
-
-
-
