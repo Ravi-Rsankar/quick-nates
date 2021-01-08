@@ -185,3 +185,12 @@ Whenever the state is updated react calls the below methods in order.
 Component is removed from the DOM or is deleted. 
 
 #### componentWillUnmount
+
+## Why functional components
+
+1. Functional component are much easier to read and test because they
+   are plain JavaScript functions without state or lifecycle-hooks
+2. You end up with less code
+3. It will get easier to separate container and presentational components because you need to think more about your component’s state if you don’t have access to setState() in your component
+4. The React team mentioned that there may be a performance boost for functional component in future React versions
+5. There is one difference is the syntax. A functional component is just a plain JavaScript function which accepts props as an argument and returns a React element. A class component requires you to extend from React.Component and create a render function which returns a React element. This requires more code but will also give some benefits
