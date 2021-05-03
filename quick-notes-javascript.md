@@ -2,7 +2,7 @@
 
 ## JS execution
 
-hat the JS engine does when we run the code.
+What the JS engine does when we run the code.
 
 - JS Engine parses your code line by line & identifies variables & functions created by code (which will be used in the execution phase)
 - JS Engine setup memory space for variables & functions ( called as **Hoisting**)
