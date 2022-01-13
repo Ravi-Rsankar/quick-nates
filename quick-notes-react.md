@@ -168,9 +168,15 @@ This is when an instance of a component is created and inserted into the DOM. Re
 
 #### constructor
 
+This is where properties are initialized.
+
 #### render
 
+Returns a react element to the virtual DOM. The virtual DOM is then rendered to the browser DOM by React. When a component is rendered, all its children are rendered recursively
+
 #### componentDidMount
+
+When a component is mounted, that means the component is in the DOM. This is the right place to make AJAX calls and get the data from the server. 
 
 ### Update
 
